@@ -1,0 +1,50 @@
+% Regression Wavelet Analysis (RWA) 
+% Forward
+%-------------------------------------------------------------------------%
+% Input:  raw_image   -    Orginal image in raw format 
+%         z      - spectral channels
+%	  y      - lines
+%	  x	 - columns
+%	  dtype  - 'int16' for integer signed 16 bits, 'uint16' for integer unsigned 16 bits, ... 
+%	  output - name of the output rawfile
+%    
+%-------------------------------------------------------------------------%
+% naoufal amrani,  Group on Interactive Coding of Images
+% webpage: www.gici.uab.es
+% email: naoufal.amrani@deic.uab.cat
+%
+% See: "http://ieeexplore.ieee.org/document/7487041/?arnumber=7487041"
+%-------------------------------------------------------------------------%
+
+
+Forward
+
+Usage:
+
+>> RWA_Transform(Image,z,y,x,datatype,output);
+
+
+Example:
+
+>> RWA_Transform('Image_30x1528x60_u16.raw',30,1528,60,'uint16','output/RWA.raw');
+
+
+
+
+Backward:
+
+Usage:
+
+>> inv_RWA_Transform(Transformed_image,z,y,x,datatype,output,sideinformation);
+
+
+Example:
+
+>> inv_RWA_Transform('output/RWA.raw',30,1528,60,'uint16','output/inv_RWA.raw','output/RWA.raw_SI.mat');
+
+
+% Check reversibility
+ 
+diff -s Image_30x1528x60_u16.raw output/inv_RWA.raw 
+
+
